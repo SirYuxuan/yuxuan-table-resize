@@ -104,6 +104,19 @@ function setupTableResize(plugin, table, filePath) {
     pinAllColumns(table, headerCells, colCount, applyWidth, savedWidths);
   }
   const pin = () => pinAllColumns(table, headerCells, colCount, applyWidth, null);
+  plugin.registerDomEvent(table, "mouseover", (e) => {
+    const target = e.target;
+    const cell = target && target.closest ? target.closest("th, td") : null;
+    if (!cell || !table.contains(cell))
+      return;
+    if (cell.scrollWidth > cell.clientWidth + 1) {
+      const text = (cell.textContent || "").trim();
+      if (cell.getAttribute("title") !== text)
+        cell.setAttribute("title", text);
+    } else if (cell.hasAttribute("title")) {
+      cell.removeAttribute("title");
+    }
+  });
   for (let i = 0; i < colCount; i++) {
     const th = headerCells[i];
     const handle = document.createElement("div");
