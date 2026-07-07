@@ -1,0 +1,61 @@
+/* Table Column Resize plugin styles */
+
+/* Pinned tables (have saved widths, or are being resized): honor the explicit
+   col/th widths and size the table to the SUM of its columns instead of the
+   full page width. Un-pinned tables keep Obsidian's native content-driven size.
+   !important beats Obsidian core / theme rules that set table-layout: auto. */
+table[data-tcr].tcr-pinned {
+  table-layout: fixed !important;
+  width: max-content !important;
+  max-width: none !important;
+}
+
+/* Scroll container: when a pinned table's columns are wider than the available
+   space, scroll horizontally inside the table instead of stretching the page. */
+.tcr-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* Drag handle: positioned at the right edge of each header cell */
+table[data-tcr] th,
+table[data-tcr] td {
+  overflow: visible;
+}
+
+table[data-tcr] th {
+  position: relative;
+}
+
+.tcr-handle {
+  position: absolute;
+  top: 0;
+  right: -3px;
+  width: 7px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 10;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Visual feedback on hover */
+.tcr-handle:hover {
+  background-color: var(--interactive-accent);
+  opacity: 0.4;
+  border-radius: 2px;
+}
+
+/* Active dragging state */
+.tcr-handle.tcr-dragging {
+  background-color: var(--interactive-accent);
+  opacity: 0.6;
+}
+
+/* Suppress cursor/selection changes while dragging */
+body.tcr-resizing,
+body.tcr-resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}

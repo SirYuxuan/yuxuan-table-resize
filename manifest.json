@@ -1,0 +1,10 @@
+{
+  "id": "yuxuan-table-resize",
+  "name": "雨轩表格列宽",
+  "version": "1.0.2",
+  "minAppVersion": "1.4.0",
+  "description": "拖动表格列边框调整列宽；表格宽度跟内容走，超宽时表格内横向滚动。列宽跨会话保存。（基于 Table Column Resize 本地改造，不参与自动更新）",
+  "author": "yuxuan (基于 lolieatapple 的 Table Column Resize)",
+  "authorUrl": "https://github.com/lolieatapple",
+  "isDesktopOnly": false
+}

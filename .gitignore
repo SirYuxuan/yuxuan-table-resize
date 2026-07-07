@@ -1,0 +1,6 @@
+# Obsidian 运行时数据：记录每张表的列宽，含笔记文件路径与表头，不应公开
+data.json
+
+# 系统 / 编辑器杂项
+.DS_Store
+node_modules/
