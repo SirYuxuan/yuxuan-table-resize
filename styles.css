@@ -17,14 +17,16 @@ table[data-tcr].tcr-pinned {
   max-width: 100%;
 }
 
-/* No wrapping: every cell stays on a single line and truncates overflow with
-   an ellipsis. The plugin adds a hover tooltip (title) with the full text,
-   but only when a cell is actually truncated. */
+/* No wrapping: every cell stays on a single line and truncates overflow with an
+   ellipsis. Uses !important to beat Obsidian's higher-specificity core cell
+   rules. In Live Preview the text lives inside .table-cell-wrapper, so that
+   element must be targeted too — styling td/th alone is not enough there. */
 table[data-tcr] th,
-table[data-tcr] td {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+table[data-tcr] td,
+table[data-tcr] .table-cell-wrapper {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 table[data-tcr] th {

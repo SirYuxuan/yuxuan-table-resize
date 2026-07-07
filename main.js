@@ -109,8 +109,9 @@ function setupTableResize(plugin, table, filePath) {
     const cell = target && target.closest ? target.closest("th, td") : null;
     if (!cell || !table.contains(cell))
       return;
-    if (cell.scrollWidth > cell.clientWidth + 1) {
-      const text = (cell.textContent || "").trim();
+    const textEl = cell.querySelector(".table-cell-wrapper") || cell;
+    if (textEl.scrollWidth > textEl.clientWidth + 1) {
+      const text = (textEl.textContent || "").trim();
       if (cell.getAttribute("title") !== text)
         cell.setAttribute("title", text);
     } else if (cell.hasAttribute("title")) {
